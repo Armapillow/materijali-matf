@@ -220,28 +220,28 @@ Ako je $\neg A$ poreciva šta je $A$?
 
 ## Jun2 2022
 
-1. Ako prvi put stignemo do nekog čvora, da li je taj put ujedno i najkraći:
-  - DFS: da/ne  
-  - BFS: da/ne  
-  - Dajkstra: da/ne  
-1. Kada algoritam pohlepne pretrage vraća neuspeh?
-2. Šta je stohastičko penjanje uzbrdo?
-3. U pretrazi prvo najbolji šta se stavlja u otvorenu listu?
-4. Kako osnovni algoritam alfa/beta vrši pretragu: dubina/širina
-5. Ako su date dopustive heuristike h1, h2..., hn za algoritam A\*, kako se može dobiti nova dopustiva heuristika?
-6. Cejtinovo kodiranje za formulu: $(p \wedge \neg q) \vee \neg p $?
-7. Ako možemo samo da izračunamo zadovoljivost, kako da dokažemo da je formula tautologija A preko toga?
-8. Da li je ispravna iskazana formula, ako je p iskazno slovo (da/ne): $p \vee p$; $p \Leftrightarrow p$; $p \equiv p$
-9. Da li su ispravni izrazi u logici prvog reda (da/ne): $\forall x \forall y (x \Rightarrow p(x))$; $\forall x (p(x) \Rightarrow p(x))$; $\forall x \exists x\  p(x)$; $\forall x \forall p\ p(x)$
-10. Zapiši sledeću rečenicu pomoću logike prvog reda: "Ne postoji zemlja koja se graniči sa Španijom, a nema izlaz na more".
-11. Šta je najopštiji unifikator?
-12.  Kategorički ili neprekidni: temperatura, rasa psa, reč u igri asocijacija, vreme ispitivanja zadovoljivosti iskazane formule.
-13. Šta znači kada je hiperparametar $\lambda$ jednak 0?
-14. Ako je ulazna slika veličine 6x6, filter 3x3, kolika je dimenzija rezultujuće slike?
-15. Koja je uloga validacionog skupa?
-16. Šta je Markovljevo svojstvo?
-17. Kada se ažurira vrednost q(s,a) u q-učenju?
-18. Kada je primenljiv osnovni algoritam q-učenja?
+1. Ako prvi put stignemo do nekog čvora, da li je taj put ujedno i najkraći:<br>
+   DFS: da/ne <br>
+   BFS: da/ne <br>
+   Dajkstra: da/ne <br>
+2. Kada algoritam pohlepne pretrage vraća neuspeh?
+3. Šta je stohastičko penjanje uzbrdo?
+4. U pretrazi prvo najbolji šta se stavlja u otvorenu listu?
+5. Kako osnovni algoritam alfa/beta vrši pretragu: dubina/širina
+6. Ako su date dopustive heuristike h1, h2..., hn za algoritam A\*, kako se može dobiti nova dopustiva heuristika?
+7. Cejtinovo kodiranje za formulu: $(p \wedge \neg q) \vee \neg p $?
+8. Ako možemo samo da izračunamo zadovoljivost, kako da dokažemo da je formula tautologija A preko toga?
+9. Da li je ispravna iskazana formula, ako je p iskazno slovo (da/ne): $p \vee p$; $p \Leftrightarrow p$; $p \equiv p$
+10. Da li su ispravni izrazi u logici prvog reda (da/ne): $\forall x \forall y (x \Rightarrow p(x))$; $\forall x (p(x) \Rightarrow p(x))$; $\forall x \exists x\  p(x)$; $\forall x \forall p\ p(x)$
+11. Zapiši sledeću rečenicu pomoću logike prvog reda: "Ne postoji zemlja koja se graniči sa Španijom, a nema izlaz na more".
+12. Šta je najopštiji unifikator?
+13.  Kategorički ili neprekidni: temperatura, rasa psa, reč u igri asocijacija, vreme ispitivanja zadovoljivosti iskazane formule.
+14. Šta znači kada je hiperparametar $\lambda$ jednak 0?
+15. Ako je ulazna slika veličine 6x6, filter 3x3, kolika je dimenzija rezultujuće slike?
+16. Koja je uloga validacionog skupa?
+17. Šta je Markovljevo svojstvo?
+18. Kada se ažurira vrednost q(s,a) u q-učenju?
+19. Kada je primenljiv osnovni algoritam q-učenja?
 
 # Grafika
 

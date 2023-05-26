@@ -1,0 +1,5 @@
+[12.12.2010 17:41:00][123.123.123.123][http://test.com:80/path/secret.txt]
+[12.12.2010 17:51:03][2607:f0d0:1002:51::4][https://tests.com/path/secret.txt]
+[15.12.2010 17:52:11][123.23.2.33][ftp://test.com/secret.txt]
+[15.12.2010 17:52:21][123.23.2.33][FILE:///home/test/secret.txt]
+[12.12.2010 17:51:03][2607:f0d0:1002:51::4][https://example.com:443/my/path/to/file.html]

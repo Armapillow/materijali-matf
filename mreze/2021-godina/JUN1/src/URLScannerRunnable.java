@@ -68,6 +68,6 @@ public class URLScannerRunnable implements Runnable {
 
     }
     private static boolean isIP(String host) {
-        return host.split("\\.").length == 4 || host.split(":").length == 6;
+        return host.split("\\.").length == 4 || host.indexOf(':') != -1;
     }
 }

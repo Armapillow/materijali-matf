@@ -12,4 +12,4 @@ Provera da li su otvoreni port-ovi:
 ---
 
 Weather app za testiranje 1. zadatka, jan2 2022:
-[link](https://zedd-weather.vercel.app/)
+[link](https://github.com/Adedoyin-Emmanuel/react-weather-app)

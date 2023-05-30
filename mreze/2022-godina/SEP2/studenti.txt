@@ -1,0 +1,4 @@
+002/2018,Pera Peric,8.1
+100/2018,Zika Zikic,6.3
+080/2018,Mika Miic,7.9
+200/2018,Jela Jelic,9.2

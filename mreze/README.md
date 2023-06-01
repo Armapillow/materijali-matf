@@ -4,6 +4,10 @@ Za testiranje UDP-a:
 * Server: `nc -lu <port>`
 * Klijent: `nc -u <host> <port>`
 
+Za testiranje Non-blocking I/O:
+* Server: `nc -l <port>`
+* Klijent: `nc <host> <port>`
+
 Provera da li su otvoreni port-ovi:
 * `lsof -i:<port>`
 * `nc -zuv <host> <port>`

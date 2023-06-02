@@ -1,6 +1,5 @@
-package Menjacnica;
+package Glasanje;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
@@ -14,18 +13,21 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class MenjacnicaServer {
+public class GlasanjeServer {
+    private static final Map<String, Integer> votes = new HashMap<>();
+    private static int validVotes   = 0;
+    private static int invalidVotes = 0;
+
     public static void main(String[] args) {
         int port = 12345;
-        Map<String, Double> currencies = new HashMap<>();
 
-        readCurrencies(currencies);
+        readAllVotes();
 
         try (ServerSocketChannel serverChannel = ServerSocketChannel.open();
              Selector selector = Selector.open()
         ) {
             if (!selector.isOpen() || !serverChannel.isOpen()) {
-                System.err.println("Error OPEN: server or selector!");
+                System.err.println("ERROR OPEN: server or selector");
                 System.exit(1);
             }
 
@@ -36,7 +38,15 @@ public class MenjacnicaServer {
             System.err.println("Server started on port " + port);
 
             while (true) {
-                selector.select();
+
+                // TODO: how??
+//                try {
+                    selector.select(5);
+//                    selector.wakeup();
+//                } catch (IOException io) {
+//                    System.err.println("proslo vreme za select!!!");
+//                }
+
 
                 Iterator<SelectionKey> it = selector.selectedKeys().iterator();
                 while (it.hasNext()) {
@@ -49,7 +59,7 @@ public class MenjacnicaServer {
                             SocketChannel client = server.accept();
 
                             client.configureBlocking(false);
-                            System.err.println("Accepted client " + client);
+                            System.err.println("Accepted client from " + client);
 
                             client.register(selector, SelectionKey.OP_READ);
 
@@ -59,25 +69,20 @@ public class MenjacnicaServer {
 
                             if (buffer == null) {
                                 buffer = ByteBuffer.allocate(1024);
-                                key.attach(buffer);
+//                                key.attach(buffer);
                             }
 
                             buffer.clear();
                             client.read(buffer);
 
-                            String bufferStr = new String(buffer.array(), 0, buffer.position()).trim();
-                            System.err.println("GOT: " + bufferStr.trim());
+                            String bufferString = new String(buffer.array(), 0, buffer.position()).trim();
+                            System.err.println("GOT: " + bufferString);
 
-                            String response = "";
-                            if (!bufferStr.equalsIgnoreCase("prekid")) {
-                                response = calculateValue(currencies, bufferStr);
-                            } else {
-                                response = bufferStr;
-                            }
+                            String response = getResponse(bufferString);
 
-                            ByteBuffer resultBuffer = ByteBuffer.allocate(1024);
-                            resultBuffer.put(response.getBytes());
-                            key.attach(resultBuffer);
+                            ByteBuffer responseBuffer = ByteBuffer.allocate(1024);
+                            responseBuffer.put(response.getBytes());
+                            key.attach(responseBuffer);
 
                             key.interestOps(SelectionKey.OP_WRITE);
 
@@ -85,14 +90,11 @@ public class MenjacnicaServer {
                             SocketChannel client = (SocketChannel) key.channel();
                             ByteBuffer buffer = (ByteBuffer) key.attachment();
 
-                            String response = new String(buffer.array(), 0, buffer.position()).trim();
-                            if (response.equalsIgnoreCase("prekid")) {
-                                System.err.println("Finished working with client..");
+                            buffer.flip();
+                            client.write(buffer);
+                            if (!buffer.hasRemaining()) {
+                                System.err.println("Finished working with client...");
                                 client.close();
-                            } else {
-                                buffer.flip();
-                                client.write(buffer);
-                                key.interestOps(SelectionKey.OP_READ);
                             }
 
                         }
@@ -108,43 +110,49 @@ public class MenjacnicaServer {
             }
 
         } catch (IOException ex) {
-            System.err.println("SERVER ERROR!");
+            System.err.println("SERVER ERROR");
             System.err.println(ex.getMessage());
         }
     }
 
-    private static String calculateValue(Map<String, Double> currencies, String bufferStr) {
-        String[] fields = bufferStr.split(" ");
-        String curr = fields[0].toLowerCase().trim();
-        double num = Double.parseDouble(fields[1].trim());
+    private static String getResponse(String vote) {
+        vote = vote.toLowerCase().trim();
 
         String response = "";
-        if (!currencies.containsKey(curr)) {
-            response = "Ne menjamo trazenu valutu";
-        } else if (num < 0) {
-            response = "Iznos novca ne moze biti negativan broj";
+        if (votes.containsKey(vote)) {
+            validVotes++;
+            int oldVotes = votes.get(vote);
+            votes.replace(vote, oldVotes+1);
+
+            double percent = votes.get(vote) / (double)(invalidVotes + validVotes);
+            percent = (double)Math.round(percent * 100) / 100;
+            response = "Hvala sto ste glasali , trenutni procenat glasova za vaseg kandidata je " + percent;
+
         } else {
-            response = Double.toString(num * currencies.get(curr));
+            invalidVotes++;
+            response = "Vas glas nije validan";
         }
 
         return response;
     }
 
-    private static void readCurrencies(Map<String, Double> currencies) {
-        String path = "tests/kursna_lista.txt";
+    private static void readAllVotes() {
+        String path = "lista.txt";
 
-        try (BufferedReader input = Files.newBufferedReader(Paths.get(path))) {
+        try (var input = Files.newBufferedReader(Paths.get(path))) {
             String line;
             while ((line = input.readLine()) != null) {
-                String[] fields = line.split(",");
-                String curr = fields[0].trim().toLowerCase();
-                Double value = Double.parseDouble(fields[1].trim());
-                currencies.put(curr, value);
+                String vote = line.toLowerCase().trim();
+                votes.put(vote, 0);
             }
 
+//            for (var entry : votes.entrySet()) {
+//                System.out.println(entry.getKey() + " -> " + entry.getValue());
+//            }
+            System.err.println("File read");
         } catch (IOException ex) {
+            System.err.println("ERROR FILE: open");
             System.err.println(ex.getMessage());
         }
-
     }
 }

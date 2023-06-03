@@ -114,18 +114,25 @@ public class MenjacnicaServer {
     }
 
     private static String calculateValue(Map<String, Double> currencies, String bufferStr) {
-        String[] fields = bufferStr.split(" ");
-        String curr = fields[0].toLowerCase().trim();
-        double num = Double.parseDouble(fields[1].trim());
 
-        String response = "";
-        if (!currencies.containsKey(curr)) {
-            response = "Ne menjamo trazenu valutu";
-        } else if (num < 0) {
-            response = "Iznos novca ne moze biti negativan broj";
+        String[] fields = bufferStr.split(" ");
+        String response = "", curr;
+        double num;
+
+        if (fields.length != 2) {
+            response = "Upit nije kompletan.";
         } else {
-            response = Double.toString(num * currencies.get(curr));
+            curr = fields[0].toLowerCase().trim();
+            num = Double.parseDouble(fields[1].trim());
+            if (!currencies.containsKey(curr)) {
+                response = "Ne menjamo trazenu valutu";
+            } else if (num < 0) {
+                response = "Iznos novca ne moze biti negativan broj";
+            } else {
+                response = Double.toString(num * currencies.get(curr));
+            }
         }
+
 
         return response;
     }

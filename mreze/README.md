@@ -8,6 +8,10 @@ Za testiranje Non-blocking I/O:
 * Server: `nc -l <port>`
 * Klijent: `nc <host> <port>`
 
+Provera za protocol handlers:
+* Mock server: `echo "something" | nc -l <port>`
+* Pokrenuti server iz prethodnog zadatka (jer su povezani zadaci)
+
 Provera da li su otvoreni port-ovi:
 * `lsof -i:<port>`
 * `nc -zuv <host> <port>`

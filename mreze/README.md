@@ -1,5 +1,9 @@
 # Komande i resursi
 
+Za testiranje TCP-a:
+* Server: `nc -l <port>`
+* Klijent: `nc <host> <port>`
+
 Za testiranje UDP-a:
 * Server: `nc -lu <port>`
 * Klijent: `nc -u <host> <port>`

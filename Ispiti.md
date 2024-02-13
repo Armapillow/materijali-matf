@@ -384,3 +384,37 @@ Teorija:
 20. Da li se kod ketmul-rom splajna računa tangenti vektor u svakoj tački: da/ne <br>
     Kako se računa tangente vektor u svakoj tački?
 
+# Specijalni Kurs
+
+## Januar-ps 2024
+
+* Bankovic
+  * Precizna definicija konzistentnosti hiperlukova, primer
+  * Opsti algoritam za resavanje CPS za konacne domene
+  * Tacno/netacno: konzistentnost lukova povlaci konz. hiperlukova; konz.
+    problema povlaci konz. lukova/hiperlukova; konz. hiperlukova povlaci konz.
+    lukova.
+  * Dominirajuci graf
+  * `EAT + THAT = APPLE` u minizinc-u
+* Vesna
+  * Graduirani poredak, `(y>z>x)`
+  * S polinom, tezinski poredak
+  * Da li je neki ideal, radikal
+  * Sta racuna Buhbergerov algo, da li se uvek zaustavlja; kolika je velicina
+    izlaza u odnosu na ulaz
+  * Neki krug i trougao
+* Janicic
+  * Slozenos DPLL procedure, da li je to najgora/najbolja/prosecna
+  * Da/ne/ne zna se: SAT pripada klasi P; SAT pripada klasi NP; SAT je NP
+    kompletan; DNF-SAT pripada klasi P; DNF-SAT pripada klasi NP; DNF-sat je
+    NP kompletan
+  * Da li `sat(M(N, L))` za random `k` opada/raste; cemu tezi kada parametar
+    tezi beskonacnosti
+  * U dimacs formatu zapisati neki problem o uciteljima i ucenicima.
+  * Ursa, bez petlji, manji od 1000 deljivi sa 7
+* Maric
+  * 9. i 10.
+  * 20.
+  * 24. i 25.
+  * 31.
+  * 37.

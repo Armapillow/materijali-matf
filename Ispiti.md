@@ -3,6 +3,7 @@
 3. [Razvoj softvera](#razvoj-softvera)
 4. [Veštačka inteligencija](#veštačka-inteligencija)
 5. [Grafika](#grafika)
+6. [Specijalni Kurs](#specijalni-kurs)
 
 # Baze
 
@@ -413,8 +414,8 @@ Teorija:
   * U dimacs formatu zapisati neki problem o uciteljima i ucenicima.
   * Ursa, bez petlji, manji od 1000 deljivi sa 7
 * Maric
-  * 9. i 10.
-  * 20.
-  * 24. i 25.
-  * 31.
-  * 37.
+  * 9 i 10
+  * 20
+  * 24 i 25
+  * 31
+  * 37
